@@ -1,13 +1,15 @@
-# Dead Gate Rush
+# Dead Gate Rush 3D
 
-A portrait, mobile-first HTML5 zombie gate-runner shooter. Vanilla JS + Canvas, no build step.
+A portrait, mobile-first 3D zombie gate-runner shooter. Vanilla JS ES modules + Three.js r186 (vendored in `vendor/three.min.js`, MIT, no CDN), no build step.
+
+NOTE: ES modules need http(s) - use a local server, opening index.html from file:// will not work.
 
 ## Run locally
 ```
 cd lastz-game
 python3 -m http.server 8000   # then open http://localhost:8000
 ```
-(Opening index.html directly also works, but a local server is closer to real hosting.)
+Add `?debug` to the URL to expose test hooks on `window.__dgr`.
 
 ## Controls
 Drag (mouse/touch) or ←/→ / A/D to steer. P or Esc pauses.
@@ -31,11 +33,12 @@ Drag (mouse/touch) or ←/→ / A/D to steer. P or Esc pauses.
 4. Provide cover art (logo in `assets/logo.png`, screenshots in `shots/`), a description and tags (zombie, shooter, runner, math).
 
 The SDK script (`https://sdk.crazygames.com/crazygames-sdk-v3.js`) is loaded in index.html and every call is guarded:
-if the SDK is missing or fails (e.g. on GitHub Pages / offline), the game runs normally, midgame ads are skipped
-and rewarded buttons grant the reward directly (so they work for testing). Remove the fallback in `CG.ad()` in game.js
+the SDK is only used when `SDK.environment === 'crazygames'`. Elsewhere (GitHub Pages, localhost) midgame ads are skipped
+and rewarded buttons grant the reward directly. Every ad call has a timeout (6 s if no ad starts, 90 s hard cap) so the game can never stall. Remove the fallback in `CG.ad()` in game.js
 if you want rewards to require an ad everywhere.
 
 ## Files
 - `index.html`, `style.css`, `game.js` – the game
-- `assets/` – generated sprites (transparent PNG) + road tile; code-drawn fallbacks if any fail to load
+- `assets/` – logo + weapon icons; all 3D models (heroine, soldiers, 3 zombie types, boss, barrels, gates, bridge) are built in code
+- `vendor/` – Three.js bundle + license
 - Progress (coins, upgrades, level, mute) is saved in localStorage key `dgr_save_v1`.

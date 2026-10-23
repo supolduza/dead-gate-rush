@@ -26,3 +26,8 @@ button:active{transform:scale(.94)}
 .shopItem small{display:block;color:#9ab;font-weight:normal}
 .shopItem button{font-size:.95em;padding:.45em .9em;background:linear-gradient(#ffcf3a,#f08a00);box-shadow:0 3px 0 #a55200}
 .shopItem button:disabled{filter:grayscale(1);opacity:.6}
+#adNote{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);background:#000d;color:#ffd84a;padding:.6em 1em;border-radius:10px;font-family:Arial;font-weight:bold;z-index:9;white-space:nowrap}
+.overlay button:disabled{opacity:.6}
+#game,#fx{position:absolute;inset:0;width:100%;height:100%}
+#fx{touch-action:none}
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}

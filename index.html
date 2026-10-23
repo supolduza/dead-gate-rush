@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>Dead Gate Rush</title>
+<title>Dead Gate Rush 3D</title>
 <meta name="description" content="Dead Gate Rush - pick the right math gates, grow your squad and blast through zombie hordes.">
 <link rel="stylesheet" href="style.css">
 <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js" async></script>
@@ -11,6 +11,7 @@
 <body>
 <div id="wrap">
   <canvas id="game"></canvas>
+  <canvas id="fx"></canvas>
   <div id="hud" class="hidden">
     <div class="pill">LV <b id="hLevel">1</b></div>
     <div class="bar"><div id="hProg"></div></div>
@@ -39,7 +40,8 @@
   <div id="overScreen" class="overlay hidden">
     <h2 class="red">SQUAD WIPED OUT</h2>
     <p>Level <b id="oLevel">1</b> · Coins earned <b id="oCoins">0</b></p>
-    <button id="reviveBtn" class="big ad">▶ REVIVE (AD)</button>
+    <button id="reviveBtn" class="mid ad">▶ REVIVE (AD)</button>
+    <button id="reviveCoinBtn" class="mid">REVIVE (🪙 50)</button>
     <button id="restartBtn" class="mid">RESTART</button>
     <button id="menuBtn2" class="mid">MAIN MENU</button>
   </div>
@@ -51,6 +53,7 @@
     <button id="shopBtn2" class="mid">UPGRADES</button>
   </div>
 </div>
-<script src="game.js"></script>
+<div id="adNote" class="hidden"></div>
+<script type="module" src="game.js"></script>
 </body>
 </html>
